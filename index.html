@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padhlo bhai</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            color: #72f849;
+            text-align: center;
+        }
+
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 100px;
+        }
+
+        .link-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s;
+            overflow: hidden;
+        }
+
+        .link-icon img {
+            width: 80%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .link-icon:hover {
+            transform: scale(1.1);
+            background-color: #a357ea;
+            color: #1e1e2f;
+        }
+
+        .quote {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 300px;
+            padding: 0 20px;
+            font-family: Canva;
+            color: #eeb3b3;
+        }
+
+        .jee-prep-image {
+            position: absolute;
+            left: 150px;
+            top: 680px;
+            width: auto; /* Adjust size as needed */
+            height: auto;
+        }
+
+        @keyframes fadeOut {
+            /* Removed fadeOut animation */
+        }
+    </style>
+</head>
+<body>
+    <h1>आसान है</h1>
+    <div class="links-container">
+        <a href="https://www.pw.live/study/batches/study" class="link-icon">
+            <img src="https://i.pinimg.com/736x/21/20/e9/2120e90de87c898a11c1be79bc372277.jpg" alt="PW">
+        </a>
+        <a href="https://chatgpt.com" class="link-icon">
+            <img src="https://static.vecteezy.com/system/resources/previews/021/059/825/original/chatgpt-logo-chat-gpt-icon-on-green-background-free-vector.jpg" alt="gpt">
+        </a>
+        <a href="https://www.youtube.com/@PW-JEEWallah" class="link-icon">
+            <img src="https://yt3.googleusercontent.com/Pk5fjLUJZJYywkpOifajcvnNXhTfCNV4i_sok0l_OAOj72wFwWwo4zDBU4ya-BknXODBcHWz7A=s160-c-k-c0x00ffffff-no-rj" alt="JEE Wallah">
+        </a>
+        <a href="https://www.google.com" class="link-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+        </a>
+    </div>
+    <div class="quote" id="quote"></div>
+    <img src="j1.png" alt="JEE Pep" class="jee-prep-image">
+    <script>
+        const quotes = [
+            "सपने वो नहीं जो हम सोते वक्त देखते हैं, सपने वो हैं जो हमें सोने नहीं देते। - एपीजे अब्दुल कलाम",
+            "कड़ी मेहनत का कोई विकल्प नहीं है। - सचिन तेंदुलकर",
+            "अगर आप खुद पर विश्वास करते हैं, तो कुछ भी असंभव नहीं है। - राज वंत सर",
+            "हर दिन एक नई शुरुआत है। - पंकज सर",
+            "ज्ञान सबसे बड़ी ताकत है। - महात्मा गांधी",
+            "हार मत मानो, क्योंकि हारने वाले ही जीतने का असली मतलब समझते हैं। - स्वामी विवेकानंद",
+            "आपका भविष्य आज के आपके प्रयासों पर निर्भर करता है। - रवींद्रनाथ टैगोर",
+            "जो समय की कद्र करता है, वही सफलता प्राप्त करता है। - चाणक्य",
+            "सपने देखो, लेकिन उन्हें पूरा करने के लिए मेहनत करो। - अलख पांडे सर",
+            "जो डर गया, वो मर गया। - भगत सिंह",
+            "अपने लक्ष्य पर ध्यान केंद्रित करो, बाकी सब अपने आप हो जाएगा। - पंकज सर",
+            "सपने सच करने के लिए पहले उन्हें देखना जरूरी है। - एपीजे अब्दुल कलाम",
+            "कभी हार मत मानो, क्योंकि जीतने का मज़ा तभी आता है। - राज वंत सर",
+            "आपकी मेहनत ही आपकी पहचान है। - अलख पांडे सर",
+            "जो खुद पर विश्वास करता है, वही असली विजेता है। - स्वामी विवेकानंद",
+            "हर दिन एक नई चुनौती है, उसे स्वीकार करो। - पंकज सर",
+            "सपने देखो और उन्हें पूरा करने के लिए जी-जान लगा दो। - सचिन सर",
+            "जो मेहनत करता है, वही सफलता का हकदार है। - चाणक्य",
+            "आपकी सोच ही आपकी ताकत है। - रवींद्रनाथ टैगोर",
+            "जो समय को बर्बाद करता है, वह खुद को बर्बाद करता है। - चाणक्य",
+            "सपने देखना आसान है, लेकिन उन्हें पूरा करना मेहनत मांगता है। - अलख पांडे सर",
+            "जो लोग मेहनत से डरते हैं, वे कभी सफल नहीं होते। - स्वामी विवेकानंद",
+            "हर दिन एक नई शुरुआत है, उसे अपनाओ। - सचिन सर",
+            "आपकी मेहनत ही आपकी पहचान है। - राज वंत सर",
+            "जो खुद पर विश्वास करता है, वही असली विजेता है। - महात्मा गांधी",
+            "जो समय की कद्र करता है, वही सफलता प्राप्त करता है। - चाणक्य",
+            "आपका भविष्य आज के आपके प्रयासों पर निर्भर करता है। - रवींद्रनाथ टैगोर",
+            "हार मत मानो, क्योंकि हारने वाले ही जीतने का असली मतलब समझते हैं। - स्वामी विवेकानंद",
+            "ज्ञान सबसे बड़ी ताकत है। - महात्मा गांधी",
+            "हर दिन एक नई शुरुआत है। - पंकज सर",
+            "अगर आप खुद पर विश्वास करते हैं, तो कुछ भी असंभव नहीं है। - राज वंत सर",
+            "कड़ी मेहनत का कोई विकल्प नहीं है। - सचिन तेंदुलकर",
+            "जो डर गया, वो मर गया। - भगत सिंह",
+            "अपने लक्ष्य पर ध्यान केंद्रित करो, बाकी सब अपने आप हो जाएगा। - पंकज सर",
+            "सपने सच करने के लिए पहले उन्हें देखना जरूरी है। - एपीजे अब्दुल कलाम",
+            "कभी हार मत मानो, क्योंकि जीतने का मज़ा तभी आता है। - राज वंत सर",
+            "आपकी मेहनत ही आपकी पहचान है। - अलख पांडे सर",
+            "जो खुद पर विश्वास करता है, वही असली विजेता है। - स्वामी विवेकानंद",
+            "हर दिन एक नई चुनौती है, उसे स्वीकार करो। - पंकज सर",
+            "सपने देखो और उन्हें पूरा करने के लिए जी-जान लगा दो। - सचिन सर",
+            "जो मेहनत करता है, वही सफलता का हकदार है। - चाणक्य",
+            "आपकी सोच ही आपकी ताकत है। - रवींद्रनाथ टैगोर",
+            "जो समय को बर्बाद करता है, वह खुद को बर्बाद करता है। - चाणक्य",
+            "सपने देखना आसान है, लेकिन उन्हें पूरा करना मेहनत मांगता है। - अलख पांडे सर",
+            "जो लोग मेहनत से डरते हैं, वे कभी सफल नहीं होते। - स्वामी विवेकानंद",
+            "हर दिन एक नई शुरुआत है, उसे अपनाओ। - सचिन सर",
+            "आपकी मेहनत ही आपकी पहचान है। - राज वंत सर"
+        ];
+
+        const quoteElement = document.getElementById('quote');
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        quoteElement.textContent = randomQuote;
+
+        let lastX = 0, lastY = 0;
+
+        document.removeEventListener('mousemove', (e) => {
+            /* Removed fireball creation logic */
+        });
+
+        const heading = document.querySelector('h1');
+        const colors = ['#72f849', '#ff4500', '#1e90ff', '#ffcc00', '#a357ea'];
+        let colorIndex = 0;
+
+        setInterval(() => {
+            heading.style.color = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % colors.length; // Cycle through colors
+        }, 1000); // Change color every 1 second
+
+        function checkScreenSize() {
+            if (window.innerWidth < 1024) { // Check if screen width is less than 1024px
+                document.body.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #1e1e2f; color: #ffffff; text-align: center; font-family: Arial, sans-serif;">
+                        <h1>Cannot Run in Small Screen, Please Open in Laptop or PC!</h1>
+                    </div>
+                `;
+            }
+        }
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize); // Recheck on window resize
+    </script>
+</body>
+</html>
