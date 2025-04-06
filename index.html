@@ -196,7 +196,7 @@
             }
         }
 
-        checkScreenSize();
+        window.addEventListener('load', checkScreenSize); // Check on page load
         window.addEventListener('resize', checkScreenSize); // Recheck on window resize
     </script>
 </body>
