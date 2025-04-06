@@ -67,7 +67,7 @@
         .quote {
             font-size: 1.2em;
             text-align: center;
-            margin-top: 300px;
+            margin-top: 260px;
             padding: 0 20px;
             font-family: Canva;
             color: #eeb3b3;
@@ -75,14 +75,25 @@
 
         .jee-prep-image {
             position: absolute;
-            left: 150px;
-            top: 680px;
+            left: 155px;
+            top: 630px;
             width: auto; /* Adjust size as needed */
             height: auto;
         }
 
         @keyframes fadeOut {
             /* Removed fadeOut animation */
+        }
+
+        .watermark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #ffffff;
+            opacity: 0.5;
+            font-family: Arial, sans-serif;
+            pointer-events: none; /* Prevent interaction */
         }
     </style>
 </head>
@@ -104,6 +115,7 @@
     </div>
     <div class="quote" id="quote"></div>
     <img src="j1.png" alt="JEE Pep" class="jee-prep-image">
+    <div class="watermark">Created by Rahul Kumar</div>
     <script>
         const quotes = [
             "सपने वो नहीं जो हम सोते वक्त देखते हैं, सपने वो हैं जो हमें सोने नहीं देते। - एपीजे अब्दुल कलाम",
